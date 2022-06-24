@@ -1,0 +1,140 @@
+.navbar-section {
+  display: flex;
+  flex-basis: 20%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: rgba(245, 246, 248, 255);
+  /* background: #ededed; */
+  padding: 30px;
+}
+.navbar-section h2 {
+  /* text-align: center; */
+  /* margin-top: 35px; */
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  /* margin-bottom: 50px; */
+  color: rgba(26, 89, 190, 255);
+  font-family: "Poppins", sans-serif;
+}
+li {
+  padding: 10px 0 0 10px;
+  text-decoration: none;
+  color: rgba(35, 68, 103, 255);
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+li a {
+  text-decoration: none;
+  color: rgba(35, 68, 103, 255);
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+.nav-link .active {
+  color: rgba(30, 235, 179, 255);
+}
+
+/* .active-nav a {
+  color: rgba(30, 235, 179, 255);
+} */
+
+.navbar-links {
+  padding-left: 10px;
+}
+ul {
+  list-style: none;
+}
+.text {
+  display: flex;
+  width: 120px;
+  /* color: #097e8dfa; */
+  font-size: 15px;
+  /* margin-top: 40px; */
+  /* font-weight: 600; */
+  /* text-transform: uppercase; */
+  /* text-align: center; */
+}
+.help-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: white;
+  height: 80px;
+  width: 180px;
+  border-radius: 5px;
+}
+.help-section .text {
+  font-family: "Poppins", sans-serif;
+  font-size: 12px;
+}
+.help-btn {
+  background-color: rgba(30, 235, 179, 255);
+  color: #f9f9f9;
+  font-weight: bolder;
+  height: 28px;
+  width: 130px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+.help-btn:hover {
+  background-color: rgb(0, 181, 66);
+  color: #f9f9f9;
+}
+.dashboard {
+  display: flex;
+}
+.dashboard-logo {
+  /* background-image: url(../../../public/img-4.png); */
+  height: 25px;
+  width: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 5px;
+}
+.enquires-logo {
+  /* background-image: url(../../../public/img-5.png); */
+  height: 25px;
+  width: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 5px;
+}
+.profile-logo {
+  /* background-image: url(../../../public/img-8.png); */
+  height: 25px;
+  width: 22px;
+  background-repeat: no-repeat;
+  /* background-position: center; */
+  margin-top: 5px;
+}
+.payment-logo {
+  /* background-image: url(../../../public/img-7.png); */
+  height: 25px;
+  width: 22px;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-top: 5px;
+}
+@media (max-width: 768px) {
+  .navbar-section {
+    display: flex;
+    flex-direction: column;
+    flex-basis: unset;
+    flex-wrap: unset;
+    justify-content: space-around;
+    align-items: center;
+    background: rgba(245, 246, 248, 255);
+    height: 300px;
+    padding: 0 20px 10px 20px;
+  }
+  .help-section {
+    /* background-color: unset; */
+    /* height: 80px; */
+    width: 100%;
+    /* border-radius: 5px; */
+  }
+}
