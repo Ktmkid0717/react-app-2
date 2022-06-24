@@ -46,7 +46,7 @@ const Profile = (props) => {
         <div className="header-text">User List</div>
         <div className="row">
           {user &&
-            user.slice(0, 3).map((item) => (
+            user.map((item) => (
               <div className="container-1" key={item.id}>
                 <div className="section-head">
                   <div className="head-1">{item.id}</div>
