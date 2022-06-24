@@ -10,7 +10,10 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const Context = React.createContext({
+    name: "Default",
+  });
+  const [api, contextHolder] = notification.useNotification();
   //   const Context = React.createContext({
   //     name: "Default",
   //   });
@@ -83,7 +86,8 @@ const Login = () => {
         .then((res) => res.json())
         .then((data) => {
           // enter you logic when the fetch is successful
-          console.log(data.token);
+          console.log(data);
+
           if (data?.token) {
             dispatch(
               login({
@@ -94,97 +98,110 @@ const Login = () => {
               })
             );
             navigate("/home");
+          } else if (data.error) {
+            openNotification(
+              "bottomRight",
+              "Invalid Credentials " + data.error
+            );
           }
         })
-        .catch((error) => {
-          // enter your logic for when there is an error (ex. error toast)
-          console.log(error);
+        .catch((err) => {
+          console.log(err);
         });
     }
   };
+  const openNotification = (placement, message) => {
+    api.info({
+      message: `Notification Alert`,
+      description: (
+        <Context.Consumer>{({ name }) => `${message}!`}</Context.Consumer>
+      ),
+      placement,
+    });
+  };
   return (
     <>
-      {/* <Context.Provider
+      <Context.Provider
         value={{
           name: "Ant Design",
         }}
       >
-        {contextHolder} */}
-      <div className="Login-main-container">
-        <div className="Login-sub-container">
-          <div className="logo-section">
-            <div className="logo"> Logo</div>
-          </div>
-          <div className="Login-content-section">
-            <Form
-              name="basic"
-              onFinish={onSubmit}
-              // labelCol={{
-              //   span: 8,
-              // }}
-              // wrapperCol={{
-              //   span: 16,
-              // }}
-              // initialValues={{
-              //   remember: true,
-              // }}
-              autoComplete="off"
-            >
-              <Form.Item
-                label="Email"
-                name="email"
-                rules={[
-                  {
-                    required: true,
-                    type: "email",
-                    message: "The input is not valid E-mail!",
-                  },
-                ]}
-                wrapperCol={{
-                  offset: 1,
-                  span: 17,
-                }}
+        {contextHolder}
+        <div className="Login-main-container">
+          <div className="Login-sub-container">
+            <div className="logo-section">
+              <div className="logo"> Logo</div>
+            </div>
+            <div className="Login-content-section">
+              <Form
+                name="basic"
+                onFinish={onSubmit}
+                // labelCol={{
+                //   span: 8,
+                // }}
+                // wrapperCol={{
+                //   span: 16,
+                // }}
+                // initialValues={{
+                //   remember: true,
+                // }}
+                autoComplete="off"
               >
-                <Input />
-              </Form.Item>
-
-              <Form.Item
-                label="Password"
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your password!",
-                  },
-                ]}
-                wrapperCol={{
-                  offset: 1,
-                  span: 17,
-                }}
-              >
-                <Input.Password />
-              </Form.Item>
-              <Form.Item
-                wrapperCol={{
-                  offset: 6,
-                  span: 12,
-                }}
-              >
-                <Button
-                  type="primary"
-                  size="large"
-                  // className="login-form-button"
-                  htmlType="submit"
-                  block
+                <Form.Item
+                  label="Email"
+                  name="email"
+                  rules={[
+                    {
+                      required: true,
+                      type: "email",
+                      message: "The input is not valid E-mail!",
+                    },
+                  ]}
+                  wrapperCol={{
+                    offset: 1,
+                    span: 17,
+                  }}
                 >
-                  Login
-                </Button>
-              </Form.Item>
-            </Form>
+                  <Input />
+                </Form.Item>
+
+                <Form.Item
+                  label="Password"
+                  name="password"
+                  rules={[
+                    {
+                      required: true,
+                      message: "Please input your password!",
+                    },
+                  ]}
+                  wrapperCol={{
+                    offset: 1,
+                    span: 17,
+                  }}
+                >
+                  <Input.Password />
+                </Form.Item>
+                <Form.Item
+                  wrapperCol={{
+                    offset: 6,
+                    span: 12,
+                  }}
+                >
+                  <Button
+                    type="primary"
+                    size="large"
+                    // className="login-form-button"
+                    htmlType="submit"
+                    block
+                  >
+                    Login
+                  </Button>
+                </Form.Item>
+              </Form>
+            </div>
           </div>
         </div>
-      </div>
-      {/* </Context.Provider> */}
+      </Context.Provider>
     </>
   );
 };
